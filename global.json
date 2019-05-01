@@ -16,7 +16,7 @@
     "resources": [
         {
             "type": "Microsoft.Web/sites",
-            "name": "[parameters('hostingPlanName')]",
+            "name": "[variables('hostingPlanName')]",
             "apiVersion": "2015-08-01",
             "location": "[variables('location')]",
             "properties": {
