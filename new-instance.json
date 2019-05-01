@@ -20,5 +20,17 @@
         "hostingPlanName": "[concat(parameters('appName'), '-plan')]"
     },
     "resources": [
+        {
+            "type": "Microsoft.Web/sites",
+            "name": "[parameters('name')]",
+            "apiVersion": "2015-08-01",
+            "location": "[variables('location')]",
+            "properties": {
+              "name": "[parameters('name')]"
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+            ]
+        }
     ]
 }

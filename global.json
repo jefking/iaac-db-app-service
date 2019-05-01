@@ -23,12 +23,24 @@
     },
     "resources": [
         {
-            "type": "Microsoft.Web/sites",
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2016-09-01",
             "name": "[variables('hostingPlanName')]",
-            "apiVersion": "2015-08-01",
-            "location": "[variables('location')]",
+            "location": "West US",
+            "sku": {
+                "name": "F1",
+                "tier": "Free",
+                "size": "F1",
+                "family": "F",
+                "capacity": 0
+            },
+            "kind": "app",
             "properties": {
-              "name": "[variables('hostingPlanName')]"
+                "name": "[variables('hostingPlanName')]",
+                "perSiteScaling": false,
+                "reserved": false,
+                "targetWorkerCount": 0,
+                "targetWorkerSizeId": 0
             }
         },
         {
