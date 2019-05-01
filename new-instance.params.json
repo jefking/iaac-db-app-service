@@ -4,6 +4,10 @@
     "parameters": {
         "appName": {
             "value": "testingappadd"
+        },
+        "name":
+        {
+            "value": "jefking"
         }
     }
 }

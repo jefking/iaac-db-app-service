@@ -5,6 +5,12 @@
         "appName": {
             "type": "string",
             "metadata": {
+                "description": "The name of the hosting plan."
+            }
+        },
+        "name": {
+            "type": "string",
+            "metadata": {
                 "description": "The name of the app that you wish to create."
             }
         }
