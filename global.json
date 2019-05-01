@@ -20,7 +20,7 @@
             "apiVersion": "2015-08-01",
             "location": "[variables('location')]",
             "properties": {
-              "name": "[parameters('hostingPlanName')]"
+              "name": "[variables('hostingPlanName')]"
             }
         }
     ]
