@@ -1,4 +1,4 @@
-# iaac-db-app-service
+# Infrastructure as Code: App Service + SQL Database
 
 # Manual Deploy
 ## Global
