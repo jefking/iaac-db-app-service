@@ -1,2 +1,27 @@
 {
+    "$schema": "http://schemas.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "appName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the function app that you wish to create."
+            }
+        }
+    },
+    "variables": {
+        "location": "[resourceGroup().location]",
+        "hostingPlanName": "[concat(parameters('appName'), '-plan')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites",
+            "name": "[parameters('hostingPlanName')]",
+            "apiVersion": "2015-08-01",
+            "location": "[variables('location')]",
+            "properties": {
+              "name": "[parameters('hostingPlanName')]"
+            }
+        }
+    ]
 }
