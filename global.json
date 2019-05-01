@@ -7,11 +7,19 @@
             "metadata": {
                 "description": "The name of the function app that you wish to create."
             }
+        },
+        "administratorLoginPassword": {
+            "type": "securestring",
+            "metadata": {
+            "description": "The administrator password of the SQL logical server."
+            }
         }
     },
     "variables": {
         "location": "[resourceGroup().location]",
-        "hostingPlanName": "[concat(parameters('appName'), '-plan')]"
+        "hostingPlanName": "[concat(parameters('appName'), '-plan')]",
+        "administratorLogin": "jefhacking4567",
+        "serverName": "kingstores"
     },
     "resources": [
         {
@@ -21,6 +29,17 @@
             "location": "[variables('location')]",
             "properties": {
               "name": "[variables('hostingPlanName')]"
+            }
+        },
+        {
+            "type": "Microsoft.Sql/servers",
+            "name": "[parameters('serverName')]",
+            "apiVersion": "2015-05-01-preview",
+            "location": "[parameters('location')]",
+            "properties": {
+                "administratorLogin": "[variables('administratorLogin')]",
+                "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+                "version": "12.0"
             }
         }
     ]
