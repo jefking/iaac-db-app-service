@@ -27,10 +27,7 @@
             "location": "[variables('location')]",
             "properties": {
               "name": "[parameters('name')]"
-            },
-            "dependsOn": [
-                "[concat('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
-            ]
+            }
         }
     ]
 }
