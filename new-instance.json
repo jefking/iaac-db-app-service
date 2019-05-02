@@ -38,7 +38,7 @@
                 }
             },
             "dependsOn":[
-                "[resourceId('Microsoft.Sql/servers/databases/', variables('fullDbName'))]"
+                "[resourceId('Microsoft.Sql/servers/databases', variables('fullDbName'))]"
             ]
         },
         {
