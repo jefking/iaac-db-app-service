@@ -33,7 +33,7 @@
 
             "type": "Microsoft.Sql/servers/databases",
             "apiVersion": "2014-04-01-preview",
-            "location": "[parameters('serverLocation')]",
+            "location": "[variables('location')]",
             "name": "[concat(variable('serverName'), '/',  parameters('dbName'))]",
             "properties": { }
         }
