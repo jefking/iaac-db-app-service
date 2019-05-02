@@ -17,32 +17,35 @@
     },
     "variables": {
         "location": "[resourceGroup().location]",
-        "serverName": "kingstores"
+        "serverName": "kingstores",
+        "fullDbName": "[concat(variables('serverName'), '/',  parameters('dbName'))]"
     },
     "resources": [
         {
             "type": "Microsoft.Web/sites",
             "name": "[parameters('appName')]",
-            "apiVersion": "2015-08-01",
+            "apiVersion": "2016-08-01",
             "location": "[variables('location')]",
             "properties": {
                 "name": "[parameters('appName')]",
                 "siteConfig": {
-                    "appSettings": [
+                    "connecton": [
                         {
                         "name": "SqlDatabaseConnection",
                         "value": ""
                         }
                     ]
                 }
-            }
+            },
+            "dependsOn":[
+                "[resourceId('Microsoft.Sql/servers/databases', variables('fullDbName'))]"
+            ]
         },
         {
-
             "type": "Microsoft.Sql/servers/databases",
             "apiVersion": "2014-04-01-preview",
             "location": "[variables('location')]",
-            "name": "[concat(variables('serverName'), '/',  parameters('dbName'))]",
+            "name": "[variables('fullDbName')]",
             "properties": { }
         }
     ]
