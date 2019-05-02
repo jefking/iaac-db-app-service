@@ -26,7 +26,15 @@
             "apiVersion": "2015-08-01",
             "location": "[variables('location')]",
             "properties": {
-              "name": "[parameters('appName')]"
+                "name": "[parameters('appName')]",
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                        "name": "SqlDatabaseConnection",
+                        "value": ""
+                        }
+                    ]
+                }
             }
         },
         {
@@ -34,7 +42,7 @@
             "type": "Microsoft.Sql/servers/databases",
             "apiVersion": "2014-04-01-preview",
             "location": "[variables('location')]",
-            "name": "[concat(variable('serverName'), '/',  parameters('dbName'))]",
+            "name": "[concat(variables('serverName'), '/',  parameters('dbName'))]",
             "properties": { }
         }
     ]
