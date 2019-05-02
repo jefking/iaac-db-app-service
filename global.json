@@ -69,7 +69,8 @@
                     }
                 }
             ]
-        },        {
+        },
+        {
             "type": "Microsoft.Storage/storageAccounts",
             "sku": {
                 "name": "Standard_LRS",
