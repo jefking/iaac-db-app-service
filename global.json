@@ -19,7 +19,8 @@
         "location": "[resourceGroup().location]",
         "hostingPlanName": "[concat(parameters('appName'), '-plan')]",
         "administratorLogin": "jefhacking4567",
-        "serverName": "kingstores"
+        "serverName": "kingstores",
+        "storageAccountName": "datastorage34"
     },
     "resources": [
         {
@@ -68,6 +69,27 @@
                     }
                 }
             ]
+        },        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "StorageV2",
+            "name": "[variables('storageAccountName')]",
+            "apiVersion": "2018-07-01",
+            "location": "[variables('location')]",
+            "properties": {
+                "accessTier": "Cool",
+                "encryption": {
+                    "services": {
+                        "blob": {
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                }
+            }
         }
     ]
 }
