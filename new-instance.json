@@ -2,13 +2,13 @@
     "$schema": "http://schemas.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "appName": {
+        "dbName": {
             "type": "string",
             "metadata": {
-                "description": "The name of the hosting plan."
+                "description": "The name of the database."
             }
         },
-        "name": {
+        "appName": {
             "type": "string",
             "metadata": {
                 "description": "The name of the app that you wish to create."
@@ -17,17 +17,25 @@
     },
     "variables": {
         "location": "[resourceGroup().location]",
-        "hostingPlanName": "[concat(parameters('appName'), '-plan')]"
+        "serverName": "kingstores"
     },
     "resources": [
         {
             "type": "Microsoft.Web/sites",
-            "name": "[parameters('name')]",
+            "name": "[parameters('appName')]",
             "apiVersion": "2015-08-01",
             "location": "[variables('location')]",
             "properties": {
-              "name": "[parameters('name')]"
+              "name": "[parameters('appName')]"
             }
+        },
+        {
+
+            "type": "Microsoft.Sql/servers/databases",
+            "apiVersion": "2014-04-01-preview",
+            "location": "[parameters('serverLocation')]",
+            "name": "[concat(variable('serverName'), '/',  parameters('dbName'))]",
+            "properties": { }
         }
     ]
 }
