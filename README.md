@@ -1,4 +1,5 @@
 # Infrastructure as Code: App Service + SQL Database
+The goal for these simple components is to onboard a new service as a secondary task to the underlying infrastructure. So what you see is global.json which deploys the control plain; and new-instance.json which subsiquently deploys a new Web App + Database onto the underlying infrastructure.
 
 # Manual Deploy
 ## Global
