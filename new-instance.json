@@ -27,15 +27,7 @@
             "apiVersion": "2016-08-01",
             "location": "[variables('location')]",
             "properties": {
-                "name": "[parameters('appName')]",
-                "siteConfig": {
-                    "connecton": [
-                        {
-                        "name": "SqlDatabaseConnection",
-                        "value": ""
-                        }
-                    ]
-                }
+                "name": "[parameters('appName')]"
             },
             "dependsOn":[
                 "[resourceId('Microsoft.Sql/servers/databases', variables('serverName'), parameters('dbName'))]"
